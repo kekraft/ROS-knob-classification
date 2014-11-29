@@ -68,6 +68,7 @@ def main():
 
 	print "Should be 1: ", result_pos
 	print "Should be 0: ", result_neg
+	
 
 def parseData(fileName):
 

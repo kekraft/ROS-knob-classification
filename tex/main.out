@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [1][-]{section.2}{Related Work}{}
+\BOOKMARK [2][-]{subsection.2.1}{Shared Autonomy}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Object Classification}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{ROS}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Microsoft Kinect}{section.2}
+\BOOKMARK [2][-]{subsection.2.5}{PyBrain}{section.2}
+\BOOKMARK [1][-]{section.3}{Methods}{}
+\BOOKMARK [2][-]{subsection.3.1}{Objects}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Data Capture}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Data Parsing}{section.3}
+\BOOKMARK [2][-]{subsection.3.4}{Learning}{section.3}
+\BOOKMARK [1][-]{section.4}{Results}{}
+\BOOKMARK [1][-]{section.5}{Future Work}{}
+\BOOKMARK [2][-]{subsection.5.1}{Buildit!}{section.5}
+\BOOKMARK [1][-]{section*.1}{References}{}

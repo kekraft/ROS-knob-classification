@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{khoshelham2012accuracy}
+K.~Khoshelham and S.~O. Elberink, ``Accuracy and resolution of kinect depth
+  data for indoor mapping applications,'' \emph{Sensors}, vol.~12, no.~2, pp.
+  1437--1454, 2012.
+
+\bibitem{nguyen2012modeling}
+C.~V. Nguyen, S.~Izadi, and D.~Lovell, ``Modeling kinect sensor noise for
+  improved 3d reconstruction and tracking,'' in \emph{3D Imaging, Modeling,
+  Processing, Visualization and Transmission (3DIMPVT), 2012 Second
+  International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2012, pp. 524--530.
+
+\end{thebibliography}

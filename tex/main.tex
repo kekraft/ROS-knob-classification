@@ -135,7 +135,7 @@ Kinect v2 has been released that provides 3x better depth fidelity and improved 
 the original Kinect \cite{kinect}. We used the original Kinect for our project that will provide a baseline for manipulative classification, which will only be improved upon for the future.
 
 \subsection{PyBrain}
-PyBrain describes itselft as ''a modular Machine Learning Library for Python.'' The open-source module focuses on neural networks and offers ways to quickly build and train neural networks, even for beginning programmers. PyBrain includes Python bindings to use other popular products like LibSvm \cite{pybrain, pybrainCode}.  
+PyBrain describes itself as ''a modular Machine Learning Library for Python.'' The open-source module focuses on neural networks and offers ways to quickly build and train neural networks, even for beginning programmers. PyBrain includes Python bindings to use other popular products like LibSvm \cite{pybrain, pybrainCode}.  
 
 PyBrain works well alongside ROS, and depends heavily upon SciPy which is included with rospy.
 
@@ -161,7 +161,6 @@ For ease of operability, and to have standardized image distances during the fir
 The Kinect sensor provides both point cloud and RGB data at resolution of 640 x 480. For every one second of recording, approximately 10 depth registered point clouds were stored.
 
 \subsection{Data Parsing}
-We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing self-written code and ros-pcl, a ROS interface to the open-source Point Cloud Library (PCL)\cite{pcl, rospcl}.
 
 \begin{figure}
 	\centering
@@ -180,11 +179,12 @@ We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 48
     \includegraphics[width=0.3\textwidth]{DH_D_R.png}
     \caption{Door knob data decomposed into the RGB and normalized greyscale depth values as viewed from the left, center and right.}
     \label{fig:decomposition}
-\end{figure*}
+    
+\end{figure*}We decomposed the captured RGB point cloud in Python utilizing self-written code and ros-pcl, a ROS interface to the open-source Point Cloud Library (PCL)\cite{pcl, rospcl}. The point cloud data was then decomposed into a 640 x 480 RGB image and a 640 x 480 depth image (see Figure \ref{fig:RVIZ_decomp}). The depth image was represented in greyscale, with intensity values normalized to the range 0 - 255. See Figure \ref{fig:decomposition} for an example of the different view angles, decomposed, for the door knob object.
+
+Only the depth values were considered for inputs to the neural network. In order to reduce the number of inputs to the neural network, the 640 x 480 depth image was cropped to the center 30\% of the pixels. This resulted in an input image sized 192 x 144. This 2D matrix was further converted into a single row vector for input to the neural network.
 
 
-
-The depth matrix was then cropped to be a matrix of size 192 x 144.
 
 \subsection{Learning}
 The data was randomly split into \%80 training data and \%20 testing data. The neural network consisted of 27,648 inputs, one for each value in the normalized depth matrix.  There were 25 hidden neurons and 5 outputs. The outputs were the class labels for the 4 knobs plus the blank backdrop.  The neural network was trained using backpropagation for 1000 epochs. Training time lasted approximately 6 hours.
@@ -202,8 +202,6 @@ The data was randomly split into \%80 training data and \%20 testing data. The n
     \caption{...explain...}
     \label{fig:results2}
 \end{figure}
-Overall, classification for the four objects was very high, much greater than random. As can be seen in figure?, if a knob was misclassified, it was classified as a lightswitch. This is probably due to the 
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=.6\textwidth]{confusion.jpg}
@@ -211,7 +209,13 @@ Overall, classification for the four objects was very high, much greater than ra
     \label{fig:confusion}
 \end{figure}
 
-Even though the training time on the neural network was longer than we hoped, it was of such duration that the robot could ''train'' on a new set of objectswhile a person was away at work, at home sleeping, or absorbed in another task.
+Overall, the classification success rate for the four objects was high, much greater than random (see Figures \ref{fig:results1} and \ref{fig:results2}). While all objects had a roughly 80\% - 90\% successful classification rate, more insight into the system can be gained from understanding how the misclassifications occurred.
+
+As can be seen in Figure \ref{fig:confusion}, if a knob was misclassified, it was often misclassified as a lightswitch. This can potentially be explained, in part, by the Kinect sensor noise. In addition, occasionally the Kinect is unable to return depth data of any sort for specific regions of the image (due to surface reflections, etc). In these cases, the neural network may only be provided with a small amount of meaningful depth information for the manipulatable object. To the neural network, this likely appears to approximate the light switch object. This is because the light switch object itself appears to be a nearly flat wall, with a small area of changing depth information (the actual switch).
+
+
+
+Even though the training time on the neural network was longer than we hoped, it was of such duration that the robot could ''train'' on a new set of objects while a person was away at work, at home sleeping, or absorbed in another task.
 
 \section{Future Work}
 The analysis of both our domain and results presents several avenues for further research.

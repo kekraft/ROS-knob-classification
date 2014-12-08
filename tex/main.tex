@@ -85,7 +85,7 @@ There are numerous obstacles preventing that from being the current reality. In 
 
 Simplifying and streamlining the robot-human interface while using what is readily available in current hardware and software will lead to a better, more fluid shared autonomy experience in less time. Robots are built to interact with the physical world at a level beyond most computer systems. To this end, they must sense the environment in order to interact with it. The Microsoft Kinect RGB-D camera is a low-cost solution for many computer vision tasks required by a robot. On the software side, the Robot Operating System (ROS), is a software system and set of libraries that currently handles basic information processing for robots in a hardware-independent manner.
 
-What is missing between the two is a simple framework with a clean interface that unites the current hardware and software capabilities for the purposes of object classification, that will then be used for object manipulation during a shared autonomy session. To this end, we built a prototype program that utilized ROS-formatted data streams from a Microsoft Kinect along with the PyBrain machine learning package to classify four common manipulative objects: a standard light switch, a door-handle, a door-knob, and a drawer handle. These objects were classified using 3D point cloud information obtained via a Kinect sensor. Having a streamlined data to classification program will improve the current state of the art shared autonomy approach for object manipulation by removing a previously time-consuming step on the part of the human user.
+What is missing between the two is a simple framework with a clean interface that unites the current hardware and software capabilities for the purposes of object classification that will then be used for object manipulation during a shared autonomy session. To this end, we built a prototype program that utilized ROS-formatted data streams from a Microsoft Kinect along with the PyBrain machine learning package to classify four common manipulative objects: a standard light switch, a door-handle, a door-knob, and a drawer handle. These objects were classified using 3D point cloud information obtained via a Kinect sensor. Having a streamlined data-to-classification program will improve the current state of the art shared autonomy approach for object manipulation by removing a previously time-consuming step on the part of the human user.
 
 \section{Related Work}
 \subsection{Shared Autonomy}
@@ -99,21 +99,21 @@ room for a human in the loop to direct or give meaning to the robot's actions.
     \centering
     \includegraphics[width=0.45\textwidth]{Shared_Autonomy_1.png}
     \includegraphics[width=0.45\textwidth]{Shared_Autonomy_2.png}
-    \caption{...explain...}
+    \caption{Right: The user-interface for a shared autonomy session. Left: PR2 manipulates a shower knob in a teleoperation session using MoveIt!.}
     \label{fig:sharedAutonomy}
 \end{figure}
 Shared Autonomy Operation of Physical Device Controls, Matthew Rueben William D. Smart HRI LBR
 
 \subsection{Object Classification}
-Automatic classification of images and objects has long been an important task in machine learning. With the proliferation of lower cost depth capable sensors (e.g. the Microsoft Kinect), more work is being done involving the classification of point cloud and 3D image classification.
+Automatic classification of images and objects has long been an important task in machine learning. With the proliferation of lower cost depth capable sensors (e.g. the Microsoft Kinect) more work is being done involving the classification of point cloud and 3D image classification.
 
-More specifically, object detection and classification using the Microsoft Kinect has been examined. Janoch, et al. present a large 3D dataset comprised of over 50 classes after determining that current 3D datasets are lacking in scene and category variation. They further provide a method to smooth the noisy depth data provided by the Kinect, and establish baseline object detection rates \cite{kinectWork}. Another application by Greuter, et al. uses Kinect point cloud data to detect game pieces (specifically, chess) and determine their board location \cite{eurobot}. They were able to achieve an approximate 84\% success rate.
+More specifically, object detection and classification using the Microsoft Kinect has been widely examined. Janoch, et al. present a large 3D dataset comprised of over 50 classes after determining that current 3D datasets are lacking in scene and category variation. They further provide a method to smooth the noisy depth data provided by the Kinect, and establish baseline object detection rates \cite{kinectWork}. Another application by Greuter, et al. uses Kinect point cloud data to detect game pieces (specifically, chess) and determine their board location \cite{eurobot}. They were able to achieve an approximate 84\% success rate.
 
 In the realm of personal robotics, Rusu, et al. examine the use of 3D point cloud based mapping and recognition in household environments. They present a method in which once an environment is mapped, 3D point cloud data obtained by laser scans can be mapped to the scene. The point cloud data is then segmented into regions, which are then able to be identified into kitched objects (e.g. cupboard, drawer, dishwasher, etc). Through real world testing, they were able to experimentally validate their results \cite{mapKitchen, mapHouse}. 
 
 \subsection{ROS}
-The Robot Operating System (ROS), which has some of its deepest roots in the Stanford AI group and former Willow Garage, 
-has become the leader in open-source robotics software \cite{ros, rospaper}. ROS is written largely in C++ and Python and runs ontop of Ubuntu.  
+The Robot Operating System (ROS), which its deepest roots in the Stanford AI group and former Willow Garage, 
+has become the leader in open-source robotics software \cite{ros, rospaper}. ROS is written largely in C++ and Python and runs on top of Ubuntu.  
 
 It is used by hobbyists, researchers, and major industrial manufacturers, and has a large pool of active developers. The software library is vast, and due to the hardware agnostic nature of the system, ROS can run on many different robot platforms.  ROS includes tools for basic robot sensing, movement, and simulators that allow programmers to test code before deploying it on a physical robot. Although ROS is guided by Open Source Robotics Foundation (OSRF), ROS relies on the larger community to maintain and extend its capabilities \cite{ros, OSRF}.
 
@@ -154,18 +154,18 @@ for their ubiquity in many residences and living environments.
 \subsection{Data Capture}
 We chose to capture the data in such a way that can be easily adapted to a near-future operation environment in which a robot will be instructed via a human trainer to ''learn'' an image that the human is pointing to.  Only capturing 5 seconds of data ensures that the capture time will be more seamless, and will not result in the human trainer waiting for enormous amounts of time for the robot to ''take in'' the scene.  
 
-We captured data utilizing the Microsoft Kinect and subscribing to the related ROS topic.  The data was recorded into a rosbag format.  Even though we did this via a stationary laptop, we were running a virtual instance of ROS to issue the commands. This means that any robot running ROS has access to the same commands and data format. (Include figures from slide here)
+We captured data utilizing the Microsoft Kinect and subscribing to the related ROS topic.  The data was recorded in the rosbag format.  Even though we did this via a stationary laptop, we were running a virtual instance of ROS to issue the commands. This means that any robot running ROS has access to the same commands and data format. 
 
-For ease of operability, and to have standardized image distances during the first iteration, we decided to detach the Kinect from a robot and place it onto a tripod, with the specific object in the middle of the Kinect's field-of-view. We kept the Kinect at the same height and distance (0.8 m) while capturing the data. Approximately 5 seconds of data were captured for each manipulative (and blank backdrop) at each viewing angle. The three viewing angles, in terms of the horizontal viewing axis were: 90 degrees, and \(\pm\) 20 degrees.
+For ease of operability, and to have standardized image distances during the first iteration, the Kinect  was detached from a robot and placed on a tripod, with the manipulative object in the middle of the Kinect's field-of-view. We kept the Kinect at the same height and distance (0.8 m) while capturing the data. Approximately 5 seconds of data were captured for each manipulative (and blank backdrop) at each viewing angle. The three viewing angles, in terms of the horizontal viewing axis, were: 90 degrees, and \(\pm\) 20 degrees.
 
 The Kinect sensor provides both point cloud and RGB data at resolution of 640 x 480. For every one second of recording, approximately 10 depth registered point clouds were stored.
 
 \subsection{Data Parsing}
-We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing ROS-pcl, a ROS interface to the open-source Point Cloud Library (PCL), and self-written code \cite{pcl, rospcl}.
+We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing self-written code and ros-pcl, a ROS interface to the open-source Point Cloud Library (PCL)\cite{pcl, rospcl}.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1.0\textwidth]{RVIZ_Decomposition.jpg}
+	\includegraphics[width=1.0\textwidth]{RVIZ_Decomposition.JPG}
 	\caption{Kinect point cloud data decomposed into RGB and depth data}
 	\label{fig:RVIZ_decomp}
 \end{figure}
@@ -184,15 +184,15 @@ We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 48
 
 
 
-The depth matrix was then cropped to be a matrix of size 192 x 144 (......Austin....?)
+The depth matrix was then cropped to be a matrix of size 192 x 144.
 
 \subsection{Learning}
-The data was randomly split into \%80 training data and \%20 testing data. The neural network, which relied upon softmax activation function, consisted of 27,648 inputs, one for each value in the normalized depth matrix.  There were 25 hidden neurons, and 5 outputs. The outputs were the class labels for the 4 knobs plus the blank backdrop.  The neural network was trained using backpropagation for 1000 epochs. Training time lasted approximately 8 hours.
+The data was randomly split into \%80 training data and \%20 testing data. The neural network consisted of 27,648 inputs, one for each value in the normalized depth matrix.  There were 25 hidden neurons and 5 outputs. The outputs were the class labels for the 4 knobs plus the blank backdrop.  The neural network was trained using backpropagation for 1000 epochs. Training time lasted approximately 6 hours.
 
 \section{Results}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\textwidth]{Results_1.JPG}
+    \includegraphics[width=0.5\textwidth]{Results_1.JPG}
     \caption{...explain...}
     \label{fig:results1}
 \end{figure}
@@ -211,7 +211,7 @@ Overall, classification for the four objects was very high, much greater than ra
     \label{fig:confusion}
 \end{figure}
 
-Even though the training time on the neural network was longer than we hoped, it was of such duration that the robot could ''train'' on a new set of objects could take place while a person was away at work, or while a person slept.
+Even though the training time on the neural network was longer than we hoped, it was of such duration that the robot could ''train'' on a new set of objectswhile a person was away at work, at home sleeping, or absorbed in another task.
 
 \section{Future Work}
 The analysis of both our domain and results presents several avenues for further research.

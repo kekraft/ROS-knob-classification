@@ -109,16 +109,16 @@ Austin could you write this section?
 
 \subsection{ROS}
 The Robot Operating System (ROS), which has some of its deepest roots in the Stanford AI group and former Willow Garage, 
-has become the leader in open-source robotics software (ros website and paper). ROS is written largely in C++ and Python and runs ontop of Ubuntu.  
+has become the leader in open-source robotics software \cite{ros, rospaper}. ROS is written largely in C++ and Python and runs ontop of Ubuntu.  
 
-It is used by hobbyists, researchers, and major industrial manufacturers, and has a large pool of active developers (ros website). The software library is vast, and due to the hardware agnostic nature of the system, ROS can run on many different robot platforms.  ROS includes tools for basic robot sensing, movement, and simulators that allow programmers to test code before deploying it on a physical robot. Although ROS is guided by Open Source Robotics Foundation (OSRF), ROS relies on the larger community to maintain and extend its capabilities (http://www.osrfoundation.org/projects).
+It is used by hobbyists, researchers, and major industrial manufacturers, and has a large pool of active developers. The software library is vast, and due to the hardware agnostic nature of the system, ROS can run on many different robot platforms.  ROS includes tools for basic robot sensing, movement, and simulators that allow programmers to test code before deploying it on a physical robot. Although ROS is guided by Open Source Robotics Foundation (OSRF), ROS relies on the larger community to maintain and extend its capabilities \cite{ros, OSRF}.
 
-ROS includes packages for teleoperation, using the keyboard and mouse, or even operating the robot utilizing a Razer Hydra controller and Oculus Rift headset (surrogate website). ROS also includes MoveIt!, a path-planning and object manipulation software (http://moveit.ros.org/). 
+ROS includes packages for teleoperation, using the keyboard and mouse, or even operating the robot utilizing a Razer Hydra controller and Oculus Rift headset \cite{surrogate}. ROS also includes MoveIt!, a path-planning and object manipulation software \cite{moveit}. 
 
 Given all of the benefits of ROS, we were somewhat surprised to find that there was not a streamlined, one-step program and interface to classify objects based on 3D point cloud information that could then be used in conjunction with a shared autonomy approach and MoveIt!.
 
 \subsection{Microsoft Kinect}
-The Microsoft Kinect was introduced to the marketplace in 2010 (CNET). Since then 
+The Microsoft Kinect was introduced to the marketplace in 2010 \cite{kinectHistory}. Since then 
 it has found its way into research labs as well living rooms.
 It provides RGB-D sensing for less than 100 dollars. It has become a standard RGB-D
 sensing device due to its low price point, extensive documentation, and large community of
@@ -128,12 +128,10 @@ and 43$^{\circ}$ vertical field-of-view.
 The device is not flawless; it has a random error in the depth axis 
 ranging from a few mm to 4 cm in a non-uniform distribution \cite{khoshelham2012accuracy,nguyen2012modeling}.
 Kinect v2 has been released that provides 3x better depth fidelity and improved small object visualization compared to 
-the original Kinect (http://www.microsoft.com/en-us/kinectforwindows/meetkinect/features.aspx).. We used the original Kinect for our project that will provide a baseline for manipulative classification, which will only be improved upon for the future.
-
-**Should we say anything about using it only indoors here due to the tech restrictions***?
+the original Kinect \cite{kinect}. We used the original Kinect for our project that will provide a baseline for manipulative classification, which will only be improved upon for the future.
 
 \subsection{PyBrain}
-PyBrain describes itselft as ''a modular Machine Learning Library for Python.'' The open-source module focuses on neural networks and offers ways to quickly build and train neural networks, even for beginning programmers. PyBrain includes Python bindings to use other popular products like LibSvm. (https://github.com/pybrain/pybrain, ) 
+PyBrain describes itselft as ''a modular Machine Learning Library for Python.'' The open-source module focuses on neural networks and offers ways to quickly build and train neural networks, even for beginning programmers. PyBrain includes Python bindings to use other popular products like LibSvm \cite{pybrain, pybrainCode}.  
 
 PyBrain works well alongside ROS, and depends heavily upon SciPy which is included with rospy.
 
@@ -159,7 +157,7 @@ For ease of operability, and to have standardized image distances during the fir
 The Kinect sensor provides both point cloud and RGB data at resolution of 640 x 480. For every one second of recording, approximately 10 depth registered point clouds were stored.
 
 \subsection{Data Parsing}
-We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing ROS-pcl, a ROS interface to the open-source Point Cloud Library (PCL), and self-written code (citation to pcl and ros-pcl).
+We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing ROS-pcl, a ROS interface to the open-source Point Cloud Library (PCL), and self-written code \cite{pcl, rospcl}.
 
 \begin{figure*}
     \centering

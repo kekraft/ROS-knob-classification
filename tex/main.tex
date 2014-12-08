@@ -90,10 +90,13 @@ What is missing between the two is a simple framework with a clean interface tha
 \section{Related Work}
 \subsection{Shared Autonomy}
 In the world of robots, there is a spectrum of autonomous function.  On one end, there is a fully autonomous robot
-without the need for human intervention in the direction of basic tasks.  Think, a driverless vehicles that only need to be told a destination, and then the rest is taken care of by the vehicle.  On the other end is remote teleoperation that requires a human expert to constantly inform and direct the robot.  Think, a scientist sitting a desktop using a joystick to control all the movements of a research submersible. Shared autonomy lies in the middle between these two extremes. 
+without the need for human intervention in the direction of basic tasks.  Think, a driverless vehicles that only need to be told a destination, and then the rest is taken care of by the vehicle.  On the other end is remote teleoperation that requires a human expert to constantly inform and direct the robot.  Think, a scientist sitting a desktop using a joystick to control all the movements of a research submersible. Shared autonomy lies in the middle between these two extremes \cite{sharedAutonomy}. 
 
 Shared autonomy requires that a robot be able to do some things on its own (e.g. raise its gripper hand or drive forward), but leaves
-room for a human in the loop to direct or give meaning to the robot's actions.
+room for a human in the loop to direct or give meaning to the robot's actions. Work has been done to create an interface that
+allows a human operator to give overall guidance to the robot in terms of where to go. The human operator must then identify the general region of the manipulative object in a GUI via a drag-and-drop action sequence.  The object is identified by having the operator ''paint'' the object in the GUI with the mouse.  Finally, a checkbox is used to classify the object.  Only after this can the robot manipulate the selected controller \ref{fig:sharedAutonomy}\cite{matt}. 
+
+We want to simplify this process by having the robot classify the object once the general regoin of the object is selected by the user, thus further autonomizing the robot's actions.
 
 \begin{figure}[h!]
     \centering
@@ -102,7 +105,6 @@ room for a human in the loop to direct or give meaning to the robot's actions.
     \caption{Right: The user-interface for a shared autonomy session. Left: PR2 manipulates a shower knob in a teleoperation session using MoveIt!.}
     \label{fig:sharedAutonomy}
 \end{figure}
-Shared Autonomy Operation of Physical Device Controls, Matthew Rueben William D. Smart HRI LBR
 
 \subsection{Object Classification}
 Automatic classification of images and objects has long been an important task in machine learning. With the proliferation of lower cost depth capable sensors (e.g. the Microsoft Kinect) more work is being done involving the classification of point cloud and 3D image classification.

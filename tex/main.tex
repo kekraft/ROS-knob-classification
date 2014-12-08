@@ -163,6 +163,13 @@ The Kinect sensor provides both point cloud and RGB data at resolution of 640 x 
 \subsection{Data Parsing}
 We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing ROS-pcl, a ROS interface to the open-source Point Cloud Library (PCL), and self-written code \cite{pcl, rospcl}.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{RVIZ_Decomposition.jpg}
+	\caption{Kinect point cloud data decomposed into RGB and depth data}
+	\label{fig:RVIZ_decomp}
+\end{figure}
+
 \begin{figure*}
     \centering
     \includegraphics[width=0.3\textwidth]{DH_RGB_L.png}
@@ -174,6 +181,8 @@ We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 48
     \caption{Door knob data decomposed into the RGB and normalized greyscale depth values as viewed from the left, center and right.}
     \label{fig:decomposition}
 \end{figure*}
+
+
 
 The depth matrix was then cropped to be a matrix of size 192 x 144 (......Austin....?)
 

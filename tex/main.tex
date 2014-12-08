@@ -95,7 +95,14 @@ without the need for human intervention in the direction of basic tasks.  Think,
 Shared autonomy requires that a robot be able to do some things on its own (e.g. raise its gripper hand or drive forward), but leaves
 room for a human in the loop to direct or give meaning to the robot's actions.
 
-(wait for paper recommendations from Matt R.)
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{Shared_Autonomy_1.png}
+    \includegraphics[width=0.45\textwidth]{Shared_Autonomy_2.png}
+    \caption{...explain...}
+    \label{fig:sharedAutonomy}
+\end{figure}
+Shared Autonomy Operation of Physical Device Controls, Matthew Rueben William D. Smart HRI LBR
 
 \subsection{Object Classification}
 Austin could you write this section?
@@ -132,8 +139,15 @@ PyBrain works well alongside ROS, and depends heavily upon SciPy which is includ
 
 \section{Methods}
 \subsection{Objects}
-We decided to classify four common household objects: a standard light switch, a door-handle, a door-knob, and a drawer handle. These objects were selected
-for their ubiquity in many residences and living environments. (Include picture of the 4 obj here)
+We decided to classify four common household objects: a door knob, light switch, drawer handle, shower knob. These objects were selected
+for their ubiquity in many residences and living environments. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{All_Knobs.jpg}
+    \caption{Objects Classified: door knob, light switch, drawer handle, shower knob}
+    \label{fig:objects}
+\end{figure}
 
 \subsection{Data Capture}
 We chose to capture the data in such a way that can be easily adapted to a near-future operation environment in which a robot will be instructed via a human trainer to ''learn'' an image that the human is pointing to.  Only capturing 5 seconds of data ensures that the capture time will be more seamless, and will not result in the human trainer waiting for enormous amounts of time for the robot to ''take in'' the scene.  
@@ -142,10 +156,22 @@ We captured data utilizing the Microsoft Kinect and subscribing to the related R
 
 For ease of operability, and to have standardized image distances during the first iteration, we decided to detach the Kinect from a robot and place it onto a tripod, with the specific object in the middle of the Kinect's field-of-view. We kept the Kinect at the same height and distance (0.8 m) while capturing the data. Approximately 5 seconds of data were captured for each manipulative (and blank backdrop) at each viewing angle. The three viewing angles, in terms of the horizontal viewing axis were: 90 degrees, and \(\pm\) 20 degrees.
 
-The Kinect sensor provides both point cloud and RGB data at resolution of 640 x 480. For every one second of recording, approximately 10 depth registered point clouds were stored.  ***Should we say how much data they took up??***
+The Kinect sensor provides both point cloud and RGB data at resolution of 640 x 480. For every one second of recording, approximately 10 depth registered point clouds were stored.
 
 \subsection{Data Parsing}
-We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing ROS-pcl, a ROS interface to the open-source Point Cloud Library (PCL), and self-written code (do you want to mention more here? I think we can just show the picture from the slides) (citation to pcl and ros-pcl).
+We decomposed the captured image into a 640 x 480 2d color matrix and a 640 x 480 normalized 2d greyscale matrix, using values 0-255. This was done in Python utilizing ROS-pcl, a ROS interface to the open-source Point Cloud Library (PCL), and self-written code (citation to pcl and ros-pcl).
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.3\textwidth]{DH_RGB_L.png}
+    \includegraphics[width=0.3\textwidth]{DH_RGB_C.png}
+    \includegraphics[width=0.3\textwidth]{DH_RGB_R.png}
+    \includegraphics[width=0.3\textwidth]{DH_D_L.png}
+    \includegraphics[width=0.3\textwidth]{DH_D_C.png}
+    \includegraphics[width=0.3\textwidth]{DH_D_R.png}
+    \caption{Door knob data decomposed into the RGB and normalized greyscale depth values as viewed from the left, center and right.}
+    \label{fig:decomposition}
+\end{figure*}
 
 The depth matrix was then cropped to be a matrix of size 192 x 144 (......Austin....?)
 
@@ -153,8 +179,26 @@ The depth matrix was then cropped to be a matrix of size 192 x 144 (......Austin
 The data was randomly split into \%80 training data and \%20 testing data. The neural network, which relied upon softmax activation function, consisted of 27,648 inputs, one for each value in the normalized depth matrix.  There were 25 hidden neurons, and 5 outputs. The outputs were the class labels for the 4 knobs plus the blank backdrop.  The neural network was trained using backpropagation for 1000 epochs. Training time lasted approximately 8 hours.
 
 \section{Results}
-((Include figures from slide..or updated ones if you want to make them))
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Results_1.JPG}
+    \caption{...explain...}
+    \label{fig:results1}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Results_2.JPG}
+    \caption{...explain...}
+    \label{fig:results2}
+\end{figure}
 Overall, classification for the four objects was very high, much greater than random. As can be seen in figure?, if a knob was misclassified, it was classified as a lightswitch. This is probably due to the 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=.8\textwidth]{confusion.jpg}
+    \caption{Confusion table....explain...}
+    \label{fig:confusion}
+\end{figure}
 
 Even though the training time on the neural network was longer than we hoped, it was of such duration that the robot could ''train'' on a new set of objects could take place while a person was away at work, or while a person slept.
 

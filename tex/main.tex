@@ -105,7 +105,11 @@ room for a human in the loop to direct or give meaning to the robot's actions.
 Shared Autonomy Operation of Physical Device Controls, Matthew Rueben William D. Smart HRI LBR
 
 \subsection{Object Classification}
-Austin could you write this section?
+Automatic classification of images and objects has long been an important task in machine learning. With the proliferation of lower cost depth capable sensors (e.g. the Microsoft Kinect), more work is being done involving the classification of point cloud and 3D image classification.
+
+More specifically, object detection and classification using the Microsoft Kinect has been examined. [CITATION INFO] Janoch, et al. present a large 3D dataset comprised of over 50 classes after determining that current 3D datasets are lacking in scene and category variation. They further provide a method to smooth the noisy depth data provided by the Kinect, and establish baseline object detection rates. Another application by [CITATION INFO] Greuter, et al. uses Kinect point cloud data to detect game pieces (specifically, chess) and determine their board location. They were able to achieve an approximate 84\% success rate.
+
+In the realm of personal robotics, Rusu, et al. examine the use of 3D point cloud based mapping and recognition in household environments. They present a method in which once an environment is mapped, 3D point cloud data obtained by laser scans can be mapped to the scene. The point cloud data is then segmented into regions, which are then able to be identified into kitched objects (e.g. cupboard, drawer, dishwasher, etc). Through real world testing, they were able to experimentally validate their results. [CITATION INFO NEEDED]
 
 \subsection{ROS}
 The Robot Operating System (ROS), which has some of its deepest roots in the Stanford AI group and former Willow Garage, 
